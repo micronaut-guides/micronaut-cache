@@ -21,7 +21,7 @@ class NewsServiceTest {
     @Inject // <3>
     NewsService newsService;
 
-    @Timeout(value = 16) // <4>
+    @Timeout(4) // <4>
     @Test
     @Order(1) // <5>
     public void firstInvocationOfNovemberDoesNotHitCache() {
@@ -29,7 +29,7 @@ class NewsServiceTest {
         assertEquals(2, headlines.size());
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(2) // <5>
     public void secondInvocationOfNovemberHitsCache() {
@@ -37,7 +37,7 @@ class NewsServiceTest {
         assertEquals(2, headlines.size());
     }
 
-    @Timeout(value = 16) // <4>
+    @Timeout(4) // <4>
     @Test
     @Order(3) // <5>
     public void firstInvocationOfOctoberDoesNotHitCache() {
@@ -45,7 +45,7 @@ class NewsServiceTest {
         assertEquals(1, headlines.size());
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(4) // <5>
     public void secondInvocationOfOctoberHitsCache() {
@@ -53,7 +53,7 @@ class NewsServiceTest {
         assertEquals(1, headlines.size());
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(5) // <5>
     public void addingAHeadlineToNovemberUpdatesCache() {
@@ -61,7 +61,7 @@ class NewsServiceTest {
         assertEquals(3, headlines.size());
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(6) // <5>
     public void novemberCacheWasUpdatedByCachePutAndThusTheValueIsRetrievedFromTheCache() {
@@ -69,7 +69,7 @@ class NewsServiceTest {
         assertEquals(3, headlines.size());
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(7) // <5>
     public void invalidateNovemberCacheWithCacheInvalidate() {
@@ -78,7 +78,7 @@ class NewsServiceTest {
         });
     }
 
-    @Timeout(value = 1) // <4>
+    @Timeout(1) // <4>
     @Test
     @Order(8) // <5>
     public void octoberCacheIsStillValid() {
@@ -86,7 +86,7 @@ class NewsServiceTest {
         assertEquals(1, headlines.size());
     }
 
-    @Timeout(value = 16) // <4>
+    @Timeout(4) // <4>
     @Test
     @Order(9) // <5>
     public void novemberCacheWasInvalidated() {

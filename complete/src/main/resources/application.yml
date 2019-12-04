@@ -2,5 +2,5 @@
 micronaut:
   caches:
     headlines: # <1>
-      maximum-size: 20 # <2>
+      charset: 'UTF-8'
 #end::config[]

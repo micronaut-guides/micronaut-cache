@@ -26,7 +26,7 @@ public class NewsService {
     @Cacheable(value = "headlines", parameters = {"month"}) // <2>
     public List<String> headlines(Month month) {
         try {
-            TimeUnit.SECONDS.sleep(15); // <3>
+            TimeUnit.SECONDS.sleep(3); // <3>
             return headlines.get(month);
         } catch (InterruptedException e) {
             return null;

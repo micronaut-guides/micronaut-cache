@@ -25,14 +25,15 @@ public class NewsControllerTest {
     @Client("/")
     HttpClient client;
 
-    @Timeout(4)
+    @Timeout(4) // <1>
     @Test
     void fetchingOctoberHeadlinesUsesCache() {
         HttpRequest request = HttpRequest.GET(UriBuilder.of("/").path(Month.OCTOBER.toString()).build());
         News news = client.toBlocking().retrieve(request, News.class);
-        assertEquals(Arrays.asList("Micronaut AOP: Awesome flexibility without the complexity"), news.getHeadlines());
+        String expected = "Micronaut AOP: Awesome flexibility without the complexity";
+        assertEquals(Arrays.asList(expected), news.getHeadlines());
 
         news = client.toBlocking().retrieve(request, News.class);
-        assertEquals(Arrays.asList("Micronaut AOP: Awesome flexibility without the complexity"), news.getHeadlines());
+        assertEquals(Arrays.asList(expected), news.getHeadlines());
     }
 }

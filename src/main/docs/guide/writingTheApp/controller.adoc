@@ -1,17 +1,23 @@
 Create a controller which engages the previous service:
 
 [source, java]
+.src/main/java/micronaut/example/micronaut/News.java
+----
+include::{sourceDir}/src/main/java/example/micronaut/News.java[]
+----
+
+[source, java]
 .src/main/java/micronaut/example/micronaut/NewsController.java
 ----
 include::{sourceDir}/src/main/java/example/micronaut/NewsController.java[]
-}
 ----
 
-Add a test, we call the endpoint twice and verify with the `@Timeout` annotation that the cache is being used.
+Add a test:
 
 [source, java]
 .src/test/java/micronaut/example/micronaut/NewsControllerTest.java
 ----
 include::{sourceDir}/src/test/java/example/micronaut/NewsControllerTest.java[]
-}
 ----
+
+<1> We call the endpoint twice and verify with the `@Timeout` annotation that the cache is being used.

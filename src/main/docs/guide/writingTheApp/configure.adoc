@@ -8,3 +8,5 @@ include::{sourceDir}/src/main/resources/application.yml[tag=config]
 
 <1> Configure a cache called "headlines".
 <2> Configure the cache with a maximum size of 20.
+
+TIP: By default Micronaut's cache uses, by default, https://github.com/ben-manes/caffeine[Caffeine].

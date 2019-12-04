@@ -25,7 +25,7 @@ public class NewsService {
         put(Month.OCTOBER, Collections.singletonList("Micronaut AOP: Awesome flexibility without the complexity"));
     }};
 
-    @Cacheable(parameters = {"month"}) // <3>
+    @Cacheable // <3>
     public List<String> headlines(Month month) {
         try {
             TimeUnit.SECONDS.sleep(3); // <4>

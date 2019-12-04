@@ -1,0 +1,6 @@
+#tag::config[]
+micronaut:
+  caches:
+    headlines: # <1>
+      maximum-size: 20 # <2>
+#end::config[]

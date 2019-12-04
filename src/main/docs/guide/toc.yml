@@ -1,0 +1,12 @@
+gettingStarted: 
+  title: Getting Started
+  requirements: What you will need
+  howto: How to complete the guide
+writingTheApp:
+  title: Writing the Application
+  configure: Configure the Application
+cacheApi:
+  title: Micronaut Cache Api
+test:
+  title: Test the Cache
+next: Where To Go From Here?

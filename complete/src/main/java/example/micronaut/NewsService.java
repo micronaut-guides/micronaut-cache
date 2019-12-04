@@ -1,5 +1,6 @@
 package example.micronaut;
 
+import io.micronaut.cache.annotation.CacheConfig;
 import io.micronaut.cache.annotation.CacheInvalidate;
 import io.micronaut.cache.annotation.CachePut;
 import io.micronaut.cache.annotation.Cacheable;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Singleton // <1>
+@CacheConfig("headlines") // <2>
 public class NewsService {
 
     Map<Month, List<String>> headlines = new HashMap<Month, List<String>>() {{
@@ -23,17 +25,17 @@ public class NewsService {
         put(Month.OCTOBER, Collections.singletonList("Micronaut AOP: Awesome flexibility without the complexity"));
     }};
 
-    @Cacheable(value = "headlines", parameters = {"month"}) // <2>
+    @Cacheable(parameters = {"month"}) // <3>
     public List<String> headlines(Month month) {
         try {
-            TimeUnit.SECONDS.sleep(3); // <3>
+            TimeUnit.SECONDS.sleep(3); // <4>
             return headlines.get(month);
         } catch (InterruptedException e) {
             return null;
         }
     }
 
-    @CachePut(value = "headlines", parameters = {"month"}) // <4>
+    @CachePut(parameters = {"month"}) // <5>
     public List<String> addHeadline(Month month, String headline) {
         if (headlines.containsKey(month)) {
             List<String> l = new ArrayList<>(headlines.get(month));
@@ -45,7 +47,7 @@ public class NewsService {
         return headlines.get(month);
     }
 
-    @CacheInvalidate(value = "headlines", parameters = {"month"}) // <5>
+    @CacheInvalidate(parameters = {"month"}) // <6>
     public void removeHeadline(Month month, String headline) {
         if (headlines.containsKey(month)) {
             List<String> l = new ArrayList<>(headlines.get(month));

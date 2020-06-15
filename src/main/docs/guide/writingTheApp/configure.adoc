@@ -7,7 +7,7 @@ which adds support for cache using https://github.com/ben-manes/caffeine[Caffein
 include::{sourceDir}/build.gradle[tag=cache-caffeine]
 ----
 
-In this sample application, we cache news headlines. Configure your caches in `application.yml`:
+Configure your caches in `application.yml`:
 
 [source, yml]
 .src/main/resources/application.yml
